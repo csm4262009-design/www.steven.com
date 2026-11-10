@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c1929, #1a3a5c);
+            min-height: 100vh;
+            color: white;
+        }
+
+        /* ===== HEADER SECTION ===== */
+        .header-banner {
+            background: linear-gradient(rgba(12, 25, 41, 0.7), rgba(26, 58, 92, 0.7)), 
+                        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 20px 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-icon {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 4px solid #38bdf8;
+            overflow: hidden;
+        }
+
+        .profile-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-banner h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+        }
+
+        .header-banner h1 span:first-child {
+            color: white;
+        }
+
+        .header-banner h1 span:last-child {
+            color: #38bdf8;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            margin-top: 10px;
+            color: #bae6fd;
+        }
+
+        /* ===== NAVIGATION BAR ===== */
+        .navbar {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 15px 10px;
+            margin: -50px 20px 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            gap: 5px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 18px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            min-width: 90px;
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, #2563eb, #0ea5e9);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+        }
+
+        .nav-item:hover:not(.active) {
+            background: rgba(56, 189, 248, 0.2);
+        }
+
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .nav-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            background: rgba(30, 64, 100, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            display: none;
+        }
+
+        section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #7dd3fc;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 10px;
+        }
+
+        section p {
+            line-height: 1.8;
+            color: #e0f2fe;
+            font-size: 1.05rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #93c5fd;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER BANNER ===== -->
+    <div class="header-banner">
+        
+        <!-- ✅ PROFILE PICTURE HERE -->
+        <div class="profile-icon">
+            <img src="hotdog.png" alt="My Profile Picture">
+        </div>
+
+        <h1><span>STUDENT</span> <span>PORTFOLIO</span></h1>
+        <p class="tagline">LEARN &nbsp; | &nbsp; CREATE &nbsp; | &nbsp; ACHIEVE &nbsp; | &nbsp; GROW</p>
+    </div>
+
+    <!-- ===== NAVIGATION BAR ===== -->
+    <nav class="navbar">
+        <a class="nav-item active" onclick="showPage('home')" id="nav-home">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-text">Home</span>
+        </a>
+        <a class="nav-item" onclick="showPage('about')" id="nav-about">
+            <span class="nav-icon">👤</span>
+            <span class="nav-text">About Me</span>
+        </a>
+        <a class="nav-item" onclick="showPage('skills')" id="nav-skills">
+            <span class="nav-icon">🏆</span>
+            <span class="nav-text">Skills & Achievements</span>
+        </a>
+        <a class="nav-item" onclick="showPage('works')" id="nav-works">
+            <span class="nav-icon">📖</span>
+            <span class="nav-text">My Works</span>
+        </a>
+        <a class="nav-item" onclick="showPage('projects')" id="nav-projects">
+            <span class="nav-icon">📁</span>
+            <span class="nav-text">Projects & Activities</span>
+        </a>
+        <a class="nav-item" onclick="showPage('reflection')" id="nav-reflection">
+            <span class="nav-icon">💡</span>
+            <span class="nav-text">My Reflection</span>
+        </a>
+        <a class="nav-item" onclick="showPage('resume')" id="nav-resume">
+            <span class="nav-icon">📄</span>
+            <span class="nav-text">My Resume</span>
+        </a>
+        <a class="nav-item" onclick="showPage('contact')" id="nav-contact">
+            <span class="nav-icon">✉️</span>
+            <span class="nav-text">Contact Me</span>
+        </a>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="container">
+        
+        <!-- HOME SECTION -->
+        <section id="home" class="active">
+            <h2>Welcome to My Portfolio! 🎓</h2>
+            <p>Hello there! 👋 I'm excited to share my learning journey with you. This portfolio showcases my growth, projects, and achievements as a student. Feel free to explore the different sections to know more about me and my work!</p>
+            <br>
+            <p><strong>"Learn, Create, Achieve, Grow"</strong> — This is my motto. Every step is progress, no matter how small. Thanks for visiting! ✨</p>
+        </section>
+
+        <!-- ABOUT ME SECTION -->
+        <section id="about">
+            <h2>About Me 👤</h2>
+            <p><strong>Name:</strong> [Your Full Name]</p>
+            <p><strong>Grade/Year Level:</strong> [Your Grade/Year]</p>
+            <p><strong>School:</strong> [Your School Name]</p>
+            <p><strong>Subject:</strong> [Your Subject]</p>
+            <br>
+            <p>Hi! I'm a passionate student who loves learning new things. My favorite subjects are [list your favorite subjects], and I enjoy [list your hobbies/interests]. My goal is to become a [your dream career] someday!</p>
+        </section>
+
+        <!-- SKILLS & ACHIEVEMENTS -->
+        <section id="skills">
+            <h2>Skills & Achievements 🏆</h2>
+            <h3>✅ My Skills:</h3>
+            <p>• Basic Computer Skills<br>
+            • Web Design (HTML/CSS)<br>
+            • Problem Solving<br>
+            • Teamwork & Collaboration<br>
+            • Creativity</p>
+            <br>
+            <h3>🏅 Achievements:</h3>
+            <p>• [Award/Honor 1]<br>
+            • [Award/Honor 2]<br>
+            • [Certificate/Credit 3]</p>
+        </section>
+
+        <!-- MY WORKS -->
+        <section id="works">
+            <h2>My Works 📖</h2>
+            <p>Here are some of the assignments, activities, and outputs I've created this school year:</p>
+            <br>
+            <p>📝 <strong>Work 1:</strong> [Name of Assignment/Project]</p>
+            <p>📝 <strong>Work 2:</strong> [Name of Assignment/Project]</p>
+            <p>📝 <strong>Work 3:</strong> [Name of Assignment/Project]</p>
+            <p>📝 <strong>Work 4:</strong> [Name of Assignment/Project]</p>
+        </section>
+
+        <!-- PROJECTS & ACTIVITIES -->
+        <section id="projects">
+            <h2>Projects & Activities 📁</h2>
+            <p><strong>📌 Project 1:</strong> [Name of Project]<br>
+            Description: [Brief description]</p>
+            <br>
+            <p><strong>📌 Project 2:</strong> [Name of Project]<br>
+            Description: [Brief description]</p>
+            <br>
+            <p><strong>🎯 Activities:</strong><br>
+            • [Activity Name 1]<br>
+            • [Activity Name 2]<br>
+            • [Activity Name 3]</p>
+        </section>
+
+        <!-- MY REFLECTION -->
+        <section id="reflection">
+            <h2>My Reflection 💡</h2>
+            <p>Through creating this portfolio, I realized that learning is a continuous journey. Every challenge helped me grow, and every achievement taught me the value of hard work. I learned that making mistakes is part of the process — what matters most is that I keep moving forward. ✨</p>
+            <br>
+            <p>This portfolio isn't just about grades — it's proof that I am capable of learning, creating, and achieving my dreams. 💪</p>
+        </section>
+
+        <!-- MY RESUME -->
+        <section id="resume">
+            <h2>My Resume 📄</h2>
+            <p><strong>Name:</strong> [Your Full Name]</p>
+            <p><strong>Birthday:</strong> [Your Birthday]</p>
+            <p><strong>Address:</strong> [Your Address]</p>
+            <p><strong>Email:</strong> [Your Email]</p>
+            <br>
+            <h3>🎓 Education:</h3>
+            <p>[Year–Year] — [School Name]<br>
+            [Year–Year] — [School Name]</p>
+            <br>
+            <h3>🌟 Character References:</h3>
+            <p>[Name of Teacher/Reference 1]<br>
+            [Name of Teacher/Reference 2]</p>
+        </section>
+
+        <!-- CONTACT ME -->
+        <section id="contact">
+            <h2>Contact Me ✉️</h2>
+            <p><strong>📧 Email:</strong> [your.email@example.com]</p>
+            <p><strong>📱 Phone:</strong> [Your Contact Number]</p>
+            <p><strong>🏫 School:</strong> [Your School Name]</p>
+            <p><strong>📌 Facebook:</strong> [Your Facebook Link]</p>
+            <br>
+            <p>Feel free to reach out! Thank you for visiting my portfolio! 😊</p>
+        </section>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>&copy; 2026 [Your Name] — Student Portfolio | All Rights Reserved</p>
+    </footer>
+
+    <!-- ===== JAVASCRIPT FOR NAVIGATION ===== -->
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            document.getElementById('nav-' + pageId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+    
+</body>
+</html>
